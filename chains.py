@@ -4,9 +4,9 @@ from langchain_core.output_parsers import StrOutputParser
 
 
 class Chain:
-    def __init__(self, api_key):
-        self.set_model(api_key)
-        self.set_translate_chain()
+    def __init__(self):
+        self.model = None
+        self.chain = None
 
     def set_model(self, api_key):
         self.model = ChatOpenAI(model="gpt-3.5-turbo", api_key=api_key)

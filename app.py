@@ -2,7 +2,7 @@ import os
 from chains import Chain
 from choices import languages
 
-chain = Chain(api_key="")
+chain = Chain()
 
 
 def set_openai_api_key(api_key):
