@@ -8,8 +8,8 @@ class Chain:
         self.model = None
         self.chain = None
 
-    def set_model(self, api_key):
-        self.model = ChatOpenAI(model="gpt-3.5-turbo", api_key=api_key)
+    def set_model(self, api_key, model):
+        self.model = ChatOpenAI(model=model, api_key=api_key)
 
     def set_translate_chain(self):
 

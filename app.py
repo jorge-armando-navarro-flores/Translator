@@ -1,12 +1,12 @@
 import os
 from chains import Chain
-from choices import languages
+from choices import languages, openai_chat_models
 
 chain = Chain()
 
 
-def set_openai_api_key(api_key):
-    chain.set_model(api_key)
+def set_openai_api_key(api_key, model):
+    chain.set_model(api_key, model)
     chain.set_translate_chain()
 
 
@@ -19,3 +19,6 @@ def translate(text, language):
 
 def get_languages():
     return languages
+
+def get_models():
+    return openai_chat_models

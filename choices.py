@@ -20,3 +20,12 @@ languages = [
     "Urdu",
     "Javanese",
 ]
+
+openai_chat_models = [
+    "gpt-3.5-turbo",
+    "gpt-3.5-turbo-0125",
+    "gpt-4",
+    "gpt-4-turbo",
+    "gpt-4o-mini",
+    "GPT-4o"
+]
