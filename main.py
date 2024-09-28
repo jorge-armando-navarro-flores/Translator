@@ -11,8 +11,7 @@ def change_model_source(source):
                 choices=get_models(source),
             ),
             gr.Textbox(
-                value="",
-                label="Open AI API Key",
+                label="OpenAI API Key",
                 placeholder="Set your OpenAI API key (Required)",
                 type="password",
             ),
@@ -28,7 +27,6 @@ def change_model_source(source):
                 choices=get_models(source),
             ),
             gr.Textbox(
-                value="",
                 label="Groq API Key",
                 placeholder="Set your Groq API key (Required)",
                 type="password",
@@ -45,7 +43,6 @@ def change_model_source(source):
                 choices=get_models(source),
             ),
             gr.Textbox(
-                value="",
                 label="Mistral API Key",
                 placeholder="Set your Mistral API key (Required)",
                 type="password",
