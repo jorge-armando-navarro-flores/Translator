@@ -58,7 +58,7 @@ def change_model_source(source):
             ),
             gr.Textbox(
                 label="HuggingFace API Key",
-                placeholder="Set your Mistral API key (Required)",
+                placeholder="Set your HuggingFace API key (Required)",
                 type="password",
             ),
             gr.Markdown(
