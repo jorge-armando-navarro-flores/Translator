@@ -41,4 +41,7 @@ chat_models = {
         "mistral-large-latest",
         "mistral-small-latest",
     ],
+    "HuggingFace": [
+        "HuggingFaceH4/zephyr-7b-beta",
+    ],
 }

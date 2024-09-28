@@ -3,6 +3,8 @@ from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_groq import ChatGroq
 from langchain_mistralai.chat_models import ChatMistralAI
+from langchain_huggingface import ChatHuggingFace
+from langchain_huggingface import HuggingFaceEndpoint
 
 
 class Chain:
@@ -17,7 +19,15 @@ class Chain:
             self.model = ChatGroq(model=model, api_key=api_key)
         elif source == "MistralAI":
             self.model = ChatMistralAI(model=model, api_key=api_key)
+        elif source == "HuggingFace":
+            llm = HuggingFaceEndpoint(
+                repo_id=model,
+                max_length=128,
+                temperature=0.5,
+                huggingfacehub_api_token=api_key,
+            )
 
+            self.model = ChatHuggingFace(llm=llm)
 
     def set_translate_chain(self):
 

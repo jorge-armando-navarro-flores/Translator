@@ -1,6 +1,5 @@
-import os
-from chains import Chain
-from choices import languages, chat_models
+from backend.chains.chains import Chain
+from backend.choices.choices import languages, chat_models
 
 chain = Chain()
 
@@ -18,6 +17,7 @@ def translate(text, language):
     try:
         return chain.get_chain().invoke({"text": text, "language": language})
     except Exception as e:
+        print(str(e))
         return "There is somenting wrong with your API Key"
 
 
