@@ -14,7 +14,7 @@ def translate(text, language):
     try:
         return chain.get_chain().invoke({"text": text, "language": language})
     except Exception as e:
-        return str(e)
+        return "There is somenting wrong with your OpenAI API Key"
 
 
 def get_languages():
