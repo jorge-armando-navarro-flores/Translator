@@ -27,5 +27,5 @@ openai_chat_models = [
     "gpt-4",
     "gpt-4-turbo",
     "gpt-4o-mini",
-    "GPT-4o"
+    "GPT-4o",
 ]

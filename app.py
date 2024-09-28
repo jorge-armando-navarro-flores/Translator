@@ -20,5 +20,6 @@ def translate(text, language):
 def get_languages():
     return languages
 
+
 def get_models():
     return openai_chat_models
