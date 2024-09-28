@@ -13,8 +13,8 @@ def set_openai_api_key(api_key, model):
 def translate(text, language):
     try:
         return chain.get_chain().invoke({"text": text, "language": language})
-    except:
-        return "There is somenting wrong with your OpenAI API Key"
+    except Exception as e:
+        return str(e)
 
 
 def get_languages():
