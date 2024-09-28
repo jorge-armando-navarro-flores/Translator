@@ -6,8 +6,12 @@ chain = Chain()
 
 
 def set_openai_api_key(api_key, model, source):
-    chain.set_model(api_key, model, source)
-    chain.set_translate_chain()
+    try:
+        chain.set_model(api_key, model, source)
+        chain.set_translate_chain()
+    except:
+        print("Set an API key")
+    return ""
 
 
 def translate(text, language):

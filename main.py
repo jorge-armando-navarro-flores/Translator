@@ -11,7 +11,6 @@ def change_model_source(source):
                 choices=get_models(source),
             ),
             gr.Textbox(
-                value="",
                 label="OpenAI API Key",
                 placeholder="Set your OpenAI API key (Required)",
                 type="password",
@@ -28,7 +27,6 @@ def change_model_source(source):
                 choices=get_models(source),
             ),
             gr.Textbox(
-                value="",
                 label="Groq API Key",
                 placeholder="Set your Groq API key (Required)",
                 type="password",
@@ -45,7 +43,6 @@ def change_model_source(source):
                 choices=get_models(source),
             ),
             gr.Textbox(
-                value="",
                 label="Mistral API Key",
                 placeholder="Set your Mistral API key (Required)",
                 type="password",
@@ -64,7 +61,6 @@ with gr.Blocks() as demo:
         label="Model Selection", value="gpt-3.5-turbo", choices=get_models("OpenAI")
     )
     openai_api_key_textbox = gr.Textbox(
-        value="",
         label="Open AI API Key",
         placeholder="Set your OpenAI API key (Required)",
         type="password",
@@ -73,8 +69,8 @@ with gr.Blocks() as demo:
         "[Get Your OpenAI API key here](https://platform.openai.com/api-keys)"
     )
 
-    text_textbox = gr.Textbox(label="Text to translate")
-    language_dropdown = gr.Dropdown(label="Language", choices=get_languages())
+    text_textbox = gr.Textbox(value="Hello", label="Text to translate")
+    language_dropdown = gr.Dropdown(value="Spanish", label="Language", choices=get_languages())
     translation_textbox = gr.Textbox(label="Translation")
 
     gr.Interface(
@@ -92,8 +88,9 @@ with gr.Blocks() as demo:
     openai_api_key_textbox.change(
         set_openai_api_key, inputs=[openai_api_key_textbox, model_dropdown, radio]
     )
-    radio.change(
-        set_openai_api_key, inputs=[openai_api_key_textbox, model_dropdown, radio]
+    radio.input(
+        set_openai_api_key, inputs=[openai_api_key_textbox, model_dropdown, radio],
+        outputs=[openai_api_key_textbox]
     )
     radio.change(
         change_model_source,

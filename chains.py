@@ -15,7 +15,7 @@ class Chain:
             self.model = ChatOpenAI(model=model, api_key=api_key)
         elif source == "Groq":
             self.model = ChatGroq(model=model, api_key=api_key)
-        elif source == "Mistral":
+        elif source == "MistralAI":
             self.model = ChatMistralAI(model=model, api_key=api_key)
 
 
