@@ -1,6 +1,8 @@
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
+from langchain_groq import ChatGroq
+from langchain_mistralai.chat_models import ChatMistralAI
 
 
 class Chain:
@@ -8,8 +10,14 @@ class Chain:
         self.model = None
         self.chain = None
 
-    def set_model(self, api_key, model):
-        self.model = ChatOpenAI(model=model, api_key=api_key)
+    def set_model(self, api_key, model, source):
+        if source == "OpenAI":
+            self.model = ChatOpenAI(model=model, api_key=api_key)
+        elif source == "Groq":
+            self.model = ChatGroq(model=model, api_key=api_key)
+        elif source == "Mistral":
+            self.model = ChatMistralAI(model=model, api_key=api_key)
+
 
     def set_translate_chain(self):
 

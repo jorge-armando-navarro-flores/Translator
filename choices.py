@@ -21,11 +21,24 @@ languages = [
     "Javanese",
 ]
 
-openai_chat_models = [
-    "gpt-3.5-turbo",
-    "gpt-3.5-turbo-0125",
-    "gpt-4",
-    "gpt-4-turbo",
-    "gpt-4o-mini",
-    "gpt-4o",
-]
+chat_models = {
+    "OpenAI": [
+        "gpt-3.5-turbo",
+        "gpt-3.5-turbo-0125",
+        "gpt-4",
+        "gpt-4-turbo",
+        "gpt-4o-mini",
+        "gpt-4o",
+    ],
+    "Groq": [
+        "gemma2-9b-it",
+        "gemma-7b-it",
+        "llama-3.1-8b-instant",
+        "llama-3.1-70b-versatile",
+        "llama-3.2-90b-text-preview",
+    ],
+    "MistralAI": [
+        "mistral-large-latest",
+        "mistral-small-latest",
+    ],
+}

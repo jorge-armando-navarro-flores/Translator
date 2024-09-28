@@ -1,18 +1,76 @@
 import gradio as gr
 from app import translate, get_languages, set_openai_api_key, get_models
 
+
+def change_model_source(source):
+    if source == "OpenAI":
+        return (
+            gr.Dropdown(
+                label="Model Selection",
+                value="gpt-3.5-turbo",
+                choices=get_models(source),
+            ),
+            gr.Textbox(
+                value="",
+                label="Open AI API Key",
+                placeholder="Set your OpenAI API key (Required)",
+                type="password",
+            ),
+            gr.Markdown(
+                "[Get Your OpenAI API key here](https://platform.openai.com/api-keys)"
+            ),
+        )
+    elif source == "Groq":
+        return (
+            gr.Dropdown(
+                label="Model Selection",
+                value="gemma2-9b-it",
+                choices=get_models(source),
+            ),
+            gr.Textbox(
+                value="",
+                label="Groq API Key",
+                placeholder="Set your Groq API key (Required)",
+                type="password",
+            ),
+            gr.Markdown(
+                "[Get Your Groq API key here](https://console.groq.com/keys)"
+            ),
+        )
+    elif source == "MistralAI":
+        return (
+            gr.Dropdown(
+                label="Model Selection",
+                value="mistral-small-latest",
+                choices=get_models(source),
+            ),
+            gr.Textbox(
+                value="",
+                label="Mistral API Key",
+                placeholder="Set your Mistral API key (Required)",
+                type="password",
+            ),
+            gr.Markdown(
+                "[Get Your Mistral API key here](https://console.mistral.ai/api-keys/)"
+            ),
+        )
+
+
 with gr.Blocks() as demo:
 
     gr.Label("Translator")
+    radio = gr.Radio(value="OpenAI", choices=["OpenAI", "Groq", "MistralAI"], label="Model Source")
     model_dropdown = gr.Dropdown(
-        label="Model Selection", value="gpt-3.5-turbo", choices=get_models()
+        label="Model Selection", value="gpt-3.5-turbo", choices=get_models("OpenAI")
     )
     openai_api_key_textbox = gr.Textbox(
         label="Open AI API Key",
         placeholder="Set your OpenAI API key (Required)",
         type="password",
     )
-    gr.Markdown("[Get Your OpenAI API key here](https://platform.openai.com/api-keys)")
+    api_key_link_dropdown = gr.Markdown(
+        "[Get Your OpenAI API key here](https://platform.openai.com/api-keys)"
+    )
 
     text_textbox = gr.Textbox(label="Text to translate")
     language_dropdown = gr.Dropdown(label="Language", choices=get_languages())
@@ -28,10 +86,15 @@ with gr.Blocks() as demo:
     )
 
     model_dropdown.change(
-        set_openai_api_key, inputs=[openai_api_key_textbox, model_dropdown]
+        set_openai_api_key, inputs=[openai_api_key_textbox, model_dropdown, radio]
     )
     openai_api_key_textbox.change(
-        set_openai_api_key, inputs=[openai_api_key_textbox, model_dropdown]
+        set_openai_api_key, inputs=[openai_api_key_textbox, model_dropdown, radio]
+    )
+    radio.change(
+        change_model_source,
+        inputs=[radio],
+        outputs=[model_dropdown, openai_api_key_textbox, api_key_link_dropdown],
     )
 
 
