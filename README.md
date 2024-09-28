@@ -127,10 +127,9 @@ languages = [
 ]
 ```
 
-If you want to adjust the list of available characters, edit the `config.py` file to include only the characters you want in the list.
-
 ## Technologies
 
 - **Python**
-- **OpenAI API** – For IA.
+- **OpenAI API** – For IA and LLMs.
 - **Gradio** – For the interactive interface.
+- **Langchain** – For orchestration
